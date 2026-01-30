@@ -12,7 +12,7 @@
             --text-main: #e0e0e0;
             --accent-color: #00d4ff; /* Cyan Hardbeat */
             --accent-glow: 0 0 15px rgba(0, 212, 255, 0.4);
-            --secondary: #ff9f1c; /* Orange pour le contraste */
+            --secondary: #ff9f1c; /* Orange */
         }
 
         body {
@@ -26,6 +26,7 @@
             justify-content: center;
             height: 100vh;
             overflow: hidden;
+            user-select: none; /* Empêche la sélection de texte */
         }
 
         /* --- LE CŒUR : LE MÉTRONOME --- */
@@ -39,15 +40,13 @@
             width: 300px;
         }
 
-        /* L'affichage BPM géant */
         .bpm-display {
             font-size: 80px;
             font-weight: bold;
             color: var(--accent-color);
             text-shadow: var(--accent-glow);
             margin: 10px 0;
-            cursor: ns-resize; /* Indique qu'on peut glisser */
-            user-select: none;
+            cursor: ns-resize;
         }
 
         .bpm-label {
@@ -69,6 +68,7 @@
             border: none;
             cursor: pointer;
             transition: transform 0.1s;
+            outline: none;
         }
 
         button:active { transform: scale(0.95); }
@@ -79,7 +79,7 @@
             border-radius: 50%;
             background: var(--text-main);
             color: var(--bg-color);
-            font-size: 30px; /* Icone Play */
+            font-size: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -110,7 +110,7 @@
         .setting-label { font-size: 10px; color: #666; margin-bottom: 5px; }
         select { background: #111; color: white; border: 1px solid #444; padding: 5px; border-radius: 4px; }
 
-        /* --- LA PUB INTELLIGENTE (SOFT MARKETING) --- */
+        /* --- MARKETING --- */
         .promo-bar {
             position: absolute;
             bottom: 30px;
@@ -130,11 +130,7 @@
             border-color: var(--accent-color);
         }
 
-        .promo-text {
-            font-size: 14px;
-            color: #ccc;
-        }
-        
+        .promo-text { font-size: 14px; color: #ccc; }
         .promo-text strong { color: white; }
 
         .btn-promo {
@@ -148,7 +144,7 @@
             box-shadow: var(--accent-glow);
         }
 
-        /* Visualizer (La boule qui pulse) */
+        /* Visualizer */
         .visual-beat {
             width: 10px; height: 10px;
             background: #444;
@@ -156,8 +152,6 @@
             margin: 0 auto 20px auto;
             transition: background 0.05s;
         }
-        .visual-beat.active { background: var(--secondary); box-shadow: 0 0 10px var(--secondary); }
-
     </style>
 </head>
 <body>
@@ -197,36 +191,10 @@
             Besoin de plus qu'un clic ? <br>
             Découvrez <strong>HARDBEAT PRO</strong>
         </div>
-        <a href="HARDBEAT-PRO.html" class="btn-promo">OUVRIR LE STUDIO 🎹</a>
+        <a href="#" class="btn-promo">OUVRIR LE STUDIO 🎹</a>
     </div>
 
-    <script>
-        // --- LOGIQUE UI SIMPLE (Juste pour tester les boutons) ---
-        // Le vrai moteur audio viendra après
-        
-        let isPlaying = false;
-        const playBtn = document.getElementById('btn-play');
-        const beatLed = document.getElementById('beat-led');
-
-        playBtn.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            playBtn.innerText = isPlaying ? "◼" : "▶"; // Change l'icône
-            playBtn.style.background = isPlaying ? "#ff4757" : "#e0e0e0"; // Rouge si Stop
-            
-            // Simulation visuelle juste pour l'effet "Waoo"
-            if(isPlaying) startFakePulse();
-        });
-
-        function startFakePulse() {
-            if(!isPlaying) return;
-            beatLed.classList.add('active');
-            setTimeout(() => beatLed.classList.remove('active'), 100);
-            setTimeout(startFakePulse, 500); // 120 BPM approx
-        }
-        
-        // Petit effet sur le BPM (Drag & Drop simulé)
-        // Ici on mettra la vraie logique plus tard
-    </script>
+    <script src="app.js"></script>
 
 </body>
 </html>
