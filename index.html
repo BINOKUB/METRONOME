@@ -269,5 +269,38 @@
     
     <script src="app.js"></script>
 
+<script>
+        // --- LOGIQUE MARKETING CIBLÉE ---
+        
+        // 1. On définit les deux destinations
+        const LINK_HARDBEAT = "https://hardbeat-pro.binokub.com/";
+        
+        // ⚠️ REMPLACE CE LIEN PAR LA VRAIE ADRESSE DE TOPDOG 👇
+        const LINK_TOPDOG = "https://topdog.binokub.com"; 
+
+        // 2. On détecte si c'est un mobile (Écran plus petit que 768px)
+        const isMobile = window.innerWidth < 768;
+
+        // 3. On cible les éléments HTML
+        const textZone = document.getElementById('promo-desc');
+        const btnZone = document.getElementById('promo-btn');
+
+        if (isMobile) {
+            // --- C'EST UN MOBILE : ON AFFICHE TOPDOG ---
+            console.log("Mode Mobile détecté : Promo Topdog");
+            
+            // On change le texte
+            textZone.innerHTML = "Envie de jouer ?<br>Découvrez <strong>TOPDOG</strong>";
+            
+            // On change le bouton
+            btnZone.href = LINK_TOPDOG;
+            btnZone.innerText = "JOUER MAINTENANT";
+            
+        } else {
+            // --- C'EST UN PC : ON GARDE HARDBEAT (Par défaut) ---
+            console.log("Mode PC détecté : Promo Hardbeat");
+        }
+    </script>
+    
 </body>
 </html>
