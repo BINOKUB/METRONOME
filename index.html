@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>METRO-ZEN | Précision Timing</title>
+    <title>METRONOME | Précision Timing</title>
     <style>
         /* --- DESIGN SYSTEM (Charte Sombre) --- */
         :root {
@@ -11,7 +11,7 @@
             --panel-color: #1e1e24;
             --text-main: #e0e0e0;
             --accent-color: #00d4ff; /* Cyan Hardbeat */
-            --accent-glow: 0 0 15px rgba(0, 212, 255, 0.4);
+            --accent-glow: 0 0 20px rgba(0, 212, 255, 0.6); /* Lueur plus forte pour le titre */
             --secondary: #ff9f1c; /* Orange */
         }
 
@@ -26,7 +26,18 @@
             justify-content: center;
             height: 100vh;
             overflow: hidden;
-            user-select: none; /* Empêche la sélection de texte */
+            user-select: none;
+        }
+
+        /* --- LE TITRE --- */
+        .main-title {
+            font-size: 42px;
+            font-weight: 900; /* Ultra Gras */
+            color: var(--accent-color);
+            text-shadow: var(--accent-glow);
+            margin: 0 0 30px 0; /* Marge en bas pour espacer de la boîte */
+            letter-spacing: 4px; /* Espacement style "Techno" */
+            text-transform: uppercase;
         }
 
         /* --- LE CŒUR : LE MÉTRONOME --- */
@@ -44,9 +55,10 @@
             font-size: 80px;
             font-weight: bold;
             color: var(--accent-color);
-            text-shadow: var(--accent-glow);
             margin: 10px 0;
             cursor: ns-resize;
+            /* Pas de glow ici pour garder la lisibilité, ou un léger */
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
 
         .bpm-label {
@@ -123,6 +135,7 @@
             border: 1px solid #333;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             transition: transform 0.3s;
+            text-decoration: none; /* Enlève le soulignement du lien global */
         }
 
         .promo-bar:hover {
@@ -141,7 +154,7 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 13px;
-            box-shadow: var(--accent-glow);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
         }
 
         /* Visualizer */
@@ -155,6 +168,8 @@
     </style>
 </head>
 <body>
+
+    <h1 class="main-title">METRONOME</h1>
 
     <div class="metronome-wrapper">
         <div class="visual-beat" id="beat-led"></div>
