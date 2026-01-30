@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
+<link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#121214">
+    <link rel="apple-touch-icon" href="icon-192.png"> <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>METRONOME | Précision Timing</title>
@@ -251,6 +258,15 @@
         <a href="https://hardbeat-pro.binokub.com/" class="btn-promo">STUDIO </a>
     </div>
 
+    <script>
+        // Enregistrement du Service Worker pour la PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log("PWA Service Worker Registered ✅"))
+                .catch((err) => console.log("PWA Error ❌", err));
+        }
+    </script>
+    
     <script src="app.js"></script>
 
 </body>
